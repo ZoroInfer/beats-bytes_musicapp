@@ -1,69 +1,36 @@
 public class Song {
 
-    // Original data
     String title;
     String artist;
-    int duration;
-
-    // New power-up data
+    int duration;// in seconds
+    int playCount = 0;
+    String mood;// happy, sad, chill, energy
     String lyrics;
-    String mood;        // happy, sad, chill, energy, etc.
-    String userTitle;   // renamed title by user
-    int playCount;     // how many times song is played
+    String language;
 
-    // Constructor for default songs
-    Song(String title, String artist, int duration, String mood, String lyrics) {
+    // Constructor
+    Song(String title, String artist, int duration, String mood, String lyrics,String language) {
         this.title = title;
         this.artist = artist;
         this.duration = duration;
         this.mood = mood;
         this.lyrics = lyrics;
-        this.userTitle = "";   // empty means no custom name
-        this.playCount = 0;
+        this.language = language;
     }
 
-    // Constructor for user-created songs
-    Song(String title, String artist, int duration) {
-        this.title = title;
-        this.artist = artist;
-        this.duration = duration;
-        this.mood = "custom";
-        this.lyrics = "No lyrics added.";
-        this.userTitle = "";
-        this.playCount = 0;
-    }
-
-    // Get display title (original or renamed)
-    String getDisplayTitle() {
-        if (userTitle.equals("")) {
-            return title;
-        } else {
-            return userTitle;
-        }
-    }
-
-    // Rename song
-    void rename(String newName) {
-        userTitle = newName;
-    }
-
-    // Display song
+    // Display song basic info (for lists)
     void display() {
-        System.out.println(getDisplayTitle() + " - " + artist + " (" + duration + " sec)");
+        System.out.println(title + " - " + artist + " (" + mood + ")");
     }
 
-    // Display full info
+    // Display full song details
     void displayFull() {
-        System.out.println("Title: " + getDisplayTitle());
-        System.out.println("Artist: " + artist);
-        System.out.println("Mood: " + mood);
-        System.out.println("Duration: " + duration + " sec");
-        System.out.println("Played: " + playCount + " times");
-    }
-
-    // Display lyrics
-    void showLyrics() {
-        System.out.println("\nLyrics of " + getDisplayTitle() + ":");
-        System.out.println(lyrics);
+        System.out.println("Title    : " + title);
+        System.out.println("Artist   : " + artist);
+        System.out.println("Duration : " + duration + " sec");
+        System.out.println("Mood     : " + mood);
+        System.out.println("Lyrics   : " + lyrics);
+        System.out.println("Language : " + language);
+        System.out.println("--------------------------------");
     }
 }
